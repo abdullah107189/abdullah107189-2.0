@@ -1,0 +1,91 @@
+import React, { ReactNode, MouseEvent } from "react";
+
+interface GlassButtonProps {
+  children: ReactNode;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  variant?: "primary" | "secondary";
+  size?: "small" | "medium" | "large";
+  className?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+}
+
+const LiquidGlassButton: React.FC<GlassButtonProps> = ({
+  children,
+  onClick,
+  variant = "primary",
+  size = "medium",
+  className = "",
+  type = "button",
+  disabled = false,
+}) => {
+  return (
+    <button
+      className={`liquid-btn text-primary ${variant} ${size} ${className}`}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+    >
+      {children}
+
+      <style jsx>{`
+        .liquid-btn {
+          backdrop-filter: blur(1px);
+          background: rgba(255, 255, 255, 0.01);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.08),
+            0 0 12px rgba(0, 0, 0, 0.15),
+            inset 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.01),
+            inset -3px -3px 0.5px -3.5px rgba(255, 255, 255, 0.1),
+            inset 1px 1px 1px -0.5px rgba(255, 255, 255, 0.1),
+            inset -1px -1px 1px -0.5px rgba(255, 255, 255, 0.1),
+            inset 0 0 6px 6px rgba(255, 255, 255, 0.12),
+            inset 0 0 2px 2px rgba(255, 255, 255, 0.06);
+
+          font-weight: 500;
+          cursor: pointer;
+          transition: transform 0.1s ease-out,
+            all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .liquid-btn::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: -2;
+          backdrop-filter: blur(1px);
+          background: rgba(255, 255, 255, 0);
+          filter: url(#button_filter);
+          -webkit-filter: url(#button_filter);
+        }
+        .liquid-btn::after {
+          content: "";
+          filter: url(#button_filter);
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          isolation: isolate;
+          -webkit-backdrop-filter: blur(2px);
+          -webkit-filter: url(#glass-distortion);
+        }
+        .liquid-btn::before,
+        .liquid-btn::after {
+          border-radius: inherit;
+        }
+
+        .liquid-btn:active {
+          transform: translateY(-2px) scale(1.1);
+        @media (hover: hover) and (pointer: fine) {
+          .liquid-btn:hover {
+            transform: translateY(-2px) scale(1.5);
+            /* transition: transform 1s ease-in-out;
+          }
+
+          .liquid-btn:active {
+            transform: translateY(-2px) scale(1.5); /* হোভারের স্টাইল ধরে রাখবে */
+          }
+        }
+      `}</style>
+    </button>
+  );
+};
+
+export default LiquidGlassButton;

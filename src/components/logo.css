@@ -1,0 +1,74 @@
+.writing-svg {
+  width: 600px;
+  height: 120px;
+}
+
+/* Background Path - Always Visible */
+.svg-text-stroke-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 2;
+  stroke-dasharray: none;
+}
+
+/* Animated Path - Trim Effect */
+.svg-text-stroke {
+  stroke: #00bcd4;
+  stroke-width: 2;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 3s ease-in-out forwards;
+}
+
+/* Text Fill - Animated */
+.svg-text-fill {
+  font-size: 48px;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  fill: transparent;
+  animation: fill 3s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+.text-path-style {
+  letter-spacing: 2px;
+}
+
+/* Trim Path Animation */
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Text Fill Animation */
+@keyframes fill {
+  0% {
+    fill: transparent;
+  }
+  100% {
+    fill: #ffffff;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .writing-svg {
+    width: 400px;
+    height: 80px;
+  }
+
+  .svg-text-fill {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .writing-svg {
+    width: 300px;
+    height: 60px;
+  }
+
+  .svg-text-fill {
+    font-size: 24px;
+  }
+}
