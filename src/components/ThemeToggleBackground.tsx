@@ -4,7 +4,7 @@ import { DotPattern } from "./ui/dot-pattern";
 import FireworksBackgroundDemo from "./animate-ui/components/backgrounds/demo-components-backgrounds-fireworks";
 import { useEffect, useState } from "react";
 
-export function LiquidBackground() {
+export function ThemeToggleBackground() {
   const { theme, resolvedTheme } = useTheme();
 
   const [isClient, setIsClient] = useState(false);
@@ -25,7 +25,7 @@ export function LiquidBackground() {
         ) : currentTheme === "dark" ? (
           <DotPattern className="mask-[radial-gradient(400px_circle_at_center,white,transparent)]"></DotPattern>
         ) : (
-          <></>
+          <FireworksBackgroundDemo population={2}></FireworksBackgroundDemo>
         )}
       </div>
     </>

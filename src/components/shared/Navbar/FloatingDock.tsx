@@ -11,8 +11,8 @@ import {
 } from "motion/react";
 
 import { useRef, useState } from "react";
-import LiquidGlassButton from "../LiquidGlassButton";
-import LiquidGlassCard from "../LiquidGlassCard";
+import LiquidGlassButton from "../liquid/LiquidGlassButton";
+import LiquidGlassCard from "../liquid/LiquidGlassCard";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export const FloatingDock = ({

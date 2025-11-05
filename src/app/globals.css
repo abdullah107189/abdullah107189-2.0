@@ -120,3 +120,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* LIQUID MODE ONLY */
+.liquid .liquid-btn::before,
+.liquid .liquid-btn::after {
+  filter: url(#button_filter);
+  -webkit-filter: url(#button_filter);
+}
+
+.liquid .liquid-glass-card::before,
+.liquid .liquid-glass-card::after {
+  filter: url(#glass-distortion);
+  -webkit-filter: url(#glass-distortion);
+}
+
+/* default (light/dark) এ liquid off */
+.liquid-btn::before,
+.liquid-btn::after,
+.liquid-glass-card::before,
+.liquid-glass-card::after {
+  filter: none !important;
+}
