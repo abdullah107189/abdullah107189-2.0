@@ -155,6 +155,20 @@
   }
 }
 
+/* default (light/dark) এ liquid off */
+.light .liquid-btn::before,
+.light .liquid-btn::after,
+.light .liquid-glass-card::before,
+.light .liquid-glass-card::after {
+  filter: none !important;
+}
+.dark .liquid-btn::before,
+.dark .liquid-btn::after,
+.dark .liquid-glass-card::before,
+.dark .liquid-glass-card::after {
+  filter: none !important;
+}
+
 /* LIQUID MODE ONLY */
 .liquid .liquid-btn::before,
 .liquid .liquid-btn::after {
@@ -168,10 +182,19 @@
   -webkit-filter: url(#glass-distortion);
 }
 
-/* default (light/dark) এ liquid off */
-.liquid-btn::before,
-.liquid-btn::after,
-.liquid-glass-card::before,
-.liquid-glass-card::after {
-  filter: none !important;
+.dark .top-card,
+.light .top-card {
+  --shadow-color: var(--foreground);
+  box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--shadow-color) 15%, transparent),
+    0 2px 4px -2px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+}
+.liquid .liquidBtnShadow {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.08),
+    0 0 12px rgba(0, 0, 0, 0.15),
+    inset 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.02),
+    inset -3px -3px 0.5px -3.5px rgba(255, 255, 255, 0.15),
+    inset 1px 1px 1px -0.5px rgba(255, 255, 255, 0.1),
+    inset -1px -1px 1px -0.5px rgba(255, 255, 255, 0.1),
+    inset 0 0 6px 6px rgba(255, 255, 255, 0.01),
+    inset 0 0 2px 2px rgba(255, 255, 255, 0);
 }

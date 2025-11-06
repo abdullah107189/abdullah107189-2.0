@@ -5,6 +5,7 @@ import { Sun, Moon, Droplets } from "lucide-react"; // Droplets for liquid
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import LiquidGlassButton from "../shared/liquid/LiquidGlassButton";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
@@ -31,21 +32,19 @@ export function ThemeToggle() {
   ] as const;
 
   return (
-    <div className="themeBackground flex items-center gap-1 p-2 rounded-full backdrop-blur-md">
-      {themes.map(({ id, icon: Icon, label }) => (
-        <Button
+    <div className="dark:bg-popover light:bg-popover liquidBtnShadow top-card flex items-center gap-1 p-2 rounded-full">
+      {themes.map(({ id, icon: Icon }) => (
+        <LiquidGlassButton
           key={id}
-          variant={theme === id ? "default" : "ghost"}
-          size="icon"
           className={cn(
-            "h-9 w-9 transition-all duration-300 rounded-full",
+            "h-9 w-9 transition-all flex items-center justify-center cursor-pointer duration-300 rounded-full",
             theme === id && ""
           )}
           onClick={() => setTheme(id)}
-          title={label}
+          // title={label}
         >
           <Icon className="h-4 w-4" />
-        </Button>
+        </LiquidGlassButton>
       ))}
       <style jsx>{`
         .liquid .themeBackground {

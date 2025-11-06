@@ -82,7 +82,7 @@ export default function WelcomeSplash({
                   stroke-dasharray: 500;
                   stroke-dashoffset: 500;
                   animation: dash 5s linear forwards,
-                    filling 5s ease-in forwards;
+                    filling 4s ease-in forwards;
                   display: block !important;
                 }
 
@@ -112,12 +112,12 @@ export default function WelcomeSplash({
             </svg>
             <div className="absolute bottom-2 right-2 font-mono">
               <NumberTicker
-                className="text-6xl font-semibold"
+                className="text-3xl md:text-5xl lg:text-6xl font-semibold"
                 style={{ fontFamily: "Momo Signature, cursive" }}
                 value={100}
               ></NumberTicker>
             </div>
-            <div className="absolute bottom-2 left-2 w-full">
+            <div className="absolute bottom-[50px] left-[50px] w-full">
               <FullStackListAnimation></FullStackListAnimation>
             </div>
           </>

@@ -36,7 +36,7 @@ export default function FullStackListAnimation(): JSX.Element {
     <motion.div variants={containerVariants} initial="hidden" animate="show">
       {fullStackPoints.map((point, index) => (
         <motion.div
-          className="text-2xl font-mono space-x-12 flex items-center gap-2"
+          className="md:text-2xl font-mono space-x-12 flex items-center gap-2"
           key={index}
           variants={itemVariants}
           style={{}}
