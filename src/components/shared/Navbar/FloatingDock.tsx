@@ -14,6 +14,7 @@ import { useRef, useState } from "react";
 import LiquidGlassButton from "../liquid/LiquidGlassButton";
 import LiquidGlassCard from "../liquid/LiquidGlassCard";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import GlassSurface from "../liquid/GlassSurface";
 
 export const FloatingDock = ({
   items,

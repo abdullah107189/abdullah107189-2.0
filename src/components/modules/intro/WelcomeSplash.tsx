@@ -2,6 +2,9 @@
 
 import { useState, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { NumberTicker } from "./NumberTicker";
+import FullStackListAnimation from "./FullStackPoints";
+import { useTheme } from "next-themes";
 
 interface WelcomeSplashProps {
   children: ReactNode;
@@ -9,38 +12,54 @@ interface WelcomeSplashProps {
   duration?: number;
   strokeColor?: string;
 }
+function useThemeReady() {
+  const { resolvedTheme } = useTheme();
+  const [ready, setReady] = useState(false);
 
+  useEffect(() => {
+    if (resolvedTheme) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setReady(true);
+    }
+  }, [resolvedTheme]);
+
+  return ready;
+}
 export default function WelcomeSplash({
   children,
-  duration = 3,
+  duration = 5,
   strokeColor = "var(--color-primary)",
 }: WelcomeSplashProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
   const dynamicStroke = strokeColor;
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, duration * 1000);
+  const [animationDone, setAnimationDone] = useState(false);
 
+  // ✅ STEP–2: Use hook here
+  const themeReady = useThemeReady();
+  const hideSplash = animationDone && themeReady;
+
+  // timer
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimationDone(true), duration * 1000);
     return () => clearTimeout(timer);
   }, [duration]);
-
-  const splashVariants = {
-    initial: { opacity: 1 },
-    exit: { opacity: 0, transition: { duration: 0.5, delay: 0.5 } },
-  };
-
+  // const splashVariants = {
+  //   initial: { opacity: 1 },
+  //   exit: { opacity: 0, transition: { duration: 0.5, delay: 0.5 } },
+  // };
   return (
     <AnimatePresence mode="wait">
-      {!isLoaded && (
+      {!hideSplash && (
         <motion.div
           key="splash"
-          variants={splashVariants}
-          initial="initial"
-          exit="exit"
-          className="fixed inset-0 flex flex-col items-center justify-center bg-background text-primary"
+          // variants={splashVariants}
+          // initial="initial"
+          // animate="initial"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.7 } }}
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-background"
         >
-          {!isLoaded && (
+          <>
             <svg
               height="100%"
               stroke={dynamicStroke}
@@ -69,8 +88,6 @@ export default function WelcomeSplash({
 
                 .text-line text {
                   font-family: "Momo Signature", cursive;
-                  font-weight: normal;
-                  font-style: normal;
                 }
 
                 @keyframes dash {
@@ -81,22 +98,34 @@ export default function WelcomeSplash({
 
                 @keyframes filling {
                   0%,
-                  90% {
-                    fill: #bac736;
+                  85% {
                     fill-opacity: 0;
                   }
+                  90% {
+                    fill-opacity: 1;
+                  }
                   100% {
-                    fill: #bac736;
                     fill-opacity: 1;
                   }
                 }
               `}</style>
             </svg>
-          )}
+            <div className="absolute bottom-2 right-2 font-mono">
+              <NumberTicker
+                className="text-6xl font-semibold"
+                style={{ fontFamily: "Momo Signature, cursive" }}
+                value={100}
+              ></NumberTicker>
+            </div>
+            <div className="absolute bottom-2 left-2 w-full">
+              <FullStackListAnimation></FullStackListAnimation>
+            </div>
+          </>
         </motion.div>
       )}
-
-      <div className={!isLoaded ? "opacity-0 h-0" : ""}>{children}</div>
+      <div className={!hideSplash ? "opacity-0" : "opacity-100"}>
+        {children}
+      </div>
     </AnimatePresence>
   );
 }

@@ -31,16 +31,15 @@ export function ThemeToggle() {
   ] as const;
 
   return (
-    <div className="flex items-center gap-1 p-1 bg-muted/80 backdrop-blur-sm rounded-xl border border-white/20">
+    <div className="themeBackground flex items-center gap-1 p-2 rounded-full backdrop-blur-md">
       {themes.map(({ id, icon: Icon, label }) => (
         <Button
           key={id}
           variant={theme === id ? "default" : "ghost"}
           size="icon"
           className={cn(
-            "h-9 w-9 rounded-lg transition-all duration-300",
-            theme === id &&
-              "shadow-lg scale-110 bg-gradient-to-br from-blue-500 to-purple-500 text-white"
+            "h-9 w-9 transition-all duration-300 rounded-full",
+            theme === id && ""
           )}
           onClick={() => setTheme(id)}
           title={label}
@@ -48,6 +47,11 @@ export function ThemeToggle() {
           <Icon className="h-4 w-4" />
         </Button>
       ))}
+      <style jsx>{`
+        .liquid .themeBackground {
+        background
+        }
+      `}</style>
     </div>
   );
 }
