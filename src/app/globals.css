@@ -41,6 +41,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
 }
 
 :root {
@@ -197,4 +206,12 @@
     inset -1px -1px 1px -0.5px rgba(255, 255, 255, 0.1),
     inset 0 0 6px 6px rgba(255, 255, 255, 0.01),
     inset 0 0 2px 2px rgba(255, 255, 255, 0);
+}
+.no-scrollbar {
+  /* Chrome, Safari, Opera-এর জন্য */
+  -ms-overflow-style: none; /* IE এবং Edge Legacy-এর জন্য */
+  scrollbar-width: none; /* Firefox-এর জন্য */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit ব্রাউজারগুলির জন্য লুকানো */
 }

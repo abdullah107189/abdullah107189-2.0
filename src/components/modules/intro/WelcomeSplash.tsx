@@ -87,7 +87,7 @@ export default function WelcomeSplash({
                 }
 
                 .text-line text {
-                  font-family: "Momo Signature", cursive;
+                    font-family: "Momo Signature", cursive;
                 }
 
                 @keyframes dash {
@@ -110,14 +110,14 @@ export default function WelcomeSplash({
                 }
               `}</style>
             </svg>
-            <div className="absolute bottom-2 right-2 font-mono">
+            <div className="absolute md:bottom-[50px] bottom-2.5 right-5 md:right-[50px] font-mono">
               <NumberTicker
                 className="text-3xl md:text-5xl lg:text-6xl font-semibold"
                 style={{ fontFamily: "Momo Signature, cursive" }}
                 value={100}
               ></NumberTicker>
             </div>
-            <div className="absolute bottom-[50px] left-[50px] w-full">
+            <div className="absolute md:bottom-[50px] bottom-2.5 md:left-[50px] left-2.5 w-full">
               <FullStackListAnimation></FullStackListAnimation>
             </div>
           </>
