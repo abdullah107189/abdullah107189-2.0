@@ -1,5 +1,5 @@
 import { type VariantProps } from "class-variance-authority";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, File, Search, Settings } from "lucide-react";
 import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -10,6 +10,7 @@ import { Button, buttonVariants } from "../../ui/button";
 import Glow from "../../ui/glow";
 import { Mockup, MockupFrame } from "../../ui/mockup";
 import Screenshot from "../../ui/screenshot";
+import { OrbitingCircles } from "@/components/ui/orbiting-circles";
 // import { Section } from "../../ui/section";
 
 interface HeroButtonProps {
@@ -52,7 +53,7 @@ export default function Hero({
   return (
     <div
       className={cn(
-        "fade-bottom overflow-hidden pb-0 sm:pb-0 md:pb-0",
+        "flex items-center justify-between pb-0 sm:pb-0 md:pb-0",
         className
       )}
     >
@@ -65,6 +66,21 @@ export default function Hero({
           <p className="text-md animate-appear text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance opacity-0 delay-100 sm:text-xl">
             {description}
           </p>
+        </div>
+      </div>
+      <div>
+        <div className="relative h-[500px] w-full overflow-hidden">
+          <OrbitingCircles>
+            <File />
+            <Settings />
+            <File />
+          </OrbitingCircles>
+          <OrbitingCircles radius={100} reverse>
+            <File />
+            <Settings />
+            <File />
+            <Search />
+          </OrbitingCircles>
         </div>
       </div>
     </div>

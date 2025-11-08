@@ -8,9 +8,10 @@ import SplashCursor from "./SplashCursor";
 import DarkVeil from "./DarkVeil";
 import { Meteors } from "./Meteors";
 import { AnimatedGridPattern } from "./AnimatedGridPattern";
-import Particles from "./Particles";
+import Particles from "./ParticlesPro";
 import GradientBlinds from "./GradientBlinds";
 import { LightRays } from "./light-rays";
+import ParticlesPro from "./ParticlesPro";
 
 export function ThemeToggleBackground() {
   const { theme, resolvedTheme } = useTheme();
@@ -38,20 +39,25 @@ export function ThemeToggleBackground() {
             {/* <DarkVeil /> */}
             {/* <AnimatedGridPattern></AnimatedGridPattern> */}
             {/* <Meteors number={30} /> */}
-            <div
-              style={{ width: "100%", height: "100%", position: "relative" }}
-            >
-              <Particles
-                particleColors={["#ffffff", "#ffffff"]}
-                particleCount={200}
-                particleSpread={10}
-                speed={0.1}
-                particleBaseSize={100}
-                moveParticlesOnHover={true}
-                alphaParticles={false}
-                disableRotation={false}
-              />
-            </div>
+            <ParticlesPro
+              className="w-full h-full"
+              stars={500}
+              particles={260}
+              speed={1}
+              parallaxStrength={1.0}
+              sphereWarp={2.8}
+              rotation={0.18}
+              hoverOnlyInside={false} // keep parallax even under overlay content
+              spread={9}
+              baseSize={120}
+              sizeJitter={0.85}
+              colors={["#ffffff", "#b9d4ff", "#9ec2ff"]}
+              starColor="#6ea8ff"
+              alphaParticles
+              cameraDistance={22}
+              maxDPR={1.5}
+              pauseWhenHidden
+            />
           </>
         ) : (
           currentTheme === "liquid" && (
@@ -83,7 +89,7 @@ export function ThemeToggleBackground() {
               <LightRays
                 count={10}
                 speed={15}
-                color="hsl(210, 80%, 70%)" 
+                color="hsl(210, 80%, 70%)"
                 blur={40}
               />
               {/* <SplashCursor></SplashCursor> */}
