@@ -26,15 +26,13 @@ export const FloatingDock = ({
 }) => {
   return (
     <>
-      <LiquidGlassCard className="w-full light:bg-card dark:bg-card flex justify-between items-center mx-auto max-w-7xl rounded-3xl">
-        <p className="text-xl md:text-4xl font-semibold text-primary ml-4">
+      <LiquidGlassCard className="w-full light:bg-card dark:bg-card flex justify-between items-center mx-auto max-w-7xl rounded-full px-1">
+        <p className="text-xl md:text-4xl font-semibold text-primary ">
           Abdullah
         </p>
         <FloatingDockDesktop items={items} className={desktopClassName} />
 
-        <div className="mr-4">
-          <ThemeToggle></ThemeToggle>
-        </div>
+        <ThemeToggle></ThemeToggle>
       </LiquidGlassCard>
       <FloatingDockMobile items={items} className={mobileClassName} />
     </>

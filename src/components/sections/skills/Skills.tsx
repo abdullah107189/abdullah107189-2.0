@@ -1,10 +1,26 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import Tilt from "react-parallax-tilt";
-import SectionHeader from "../../../Components/SectionHeader";
-import "react-tabs/style/react-tabs.css";
+// src/components/sections/skills/Skills.tsx
+
 import "./skill.css";
+import SectionHeader from "@/components/shared/SectionHeader";
+import SkillTabs from "./SkillTabs";
+// নতুন Client Component ইম্পোর্ট করুন
+
+// ডেটা স্ট্রাকচারের জন্য টাইপ সংজ্ঞায়িত করা
+interface SkillItem {
+  name: string;
+  bg: string;
+  img: string;
+}
+
+interface SkillsData {
+  Frontend: SkillItem[];
+  Backend: SkillItem[];
+  Tools: SkillItem[];
+}
+
 const Skills = () => {
-  const skills = {
+  // ডেটা এখানে Server Component-এই রাখুন
+  const skills: SkillsData = {
     Frontend: [
       {
         name: "HTML5",
@@ -114,121 +130,10 @@ const Skills = () => {
   };
 
   return (
-    <div>
+    <div className="md:my-20 my-10">
       <SectionHeader title={"Skills"}></SectionHeader>
-
-      <Tabs className="z-10 relative">
-        {/* top bar  */}
-        <TabList
-          className={
-            "flex   justify-center my-5 border dark:border-gray-400 z-10 md:w-1/2 mx-auto p-2 rounded-full"
-          }
-        >
-          <Tab className="md:mx-3 border dark:border-gray-400  rounded-full z-30 mx-1 cursor-pointer md:px-6 px-2 focus:outline-none">
-            Frontend
-          </Tab>
-          <Tab className="md:mx-3 border dark:border-gray-400  rounded-full z-30 mx-1 cursor-pointer md:px-6 px-2 focus:outline-none">
-            Backend
-          </Tab>
-          <Tab className="md:mx-3 border dark:border-gray-400  rounded-full z-30 mx-1 cursor-pointer md:px-6 px-2 focus:outline-none">
-            Tools
-          </Tab>
-        </TabList>
-
-        {/* frontend section */}
-        <TabPanel>
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="flex flex-wrap justify-center gap-5">
-              {skills?.Frontend?.map((category, item) => (
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay={item * 100}
-                  key={item}
-                  className="flex items-center justify-center"
-                >
-                  <Tilt
-                    scale={1.3}
-                    transitionSpeed={2500}
-                    className="bg-white rounded-3xl hover:z-10 z-10"
-                  >
-                    <div
-                      className={`rounded-3xl p-2 hover:z-10 ${category.bg}`}
-                    >
-                      <img
-                        className="rounded-2xl w-20 h-20 object-contain"
-                        src={category.img}
-                        alt={category.name || "Skill Image"}
-                      />
-                    </div>
-                  </Tilt>
-                </div>
-              ))}
-            </div>
-          </div>
-        </TabPanel>
-        {/* backend section  */}
-        <TabPanel>
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="flex flex-wrap justify-center gap-5">
-              {skills?.Backend?.map((category, item) => (
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay={item * 100}
-                  key={item}
-                  className="flex items-center justify-center"
-                >
-                  <Tilt
-                    scale={1.3}
-                    transitionSpeed={2500}
-                    className="bg-white rounded-3xl hover:z-10"
-                  >
-                    <div
-                      className={`rounded-3xl p-2 hover:z-10 ${category.bg}`}
-                    >
-                      <img
-                        className="rounded-2xl w-20 h-20 object-contain"
-                        src={category.img}
-                        alt={category.name || "Skill Image"}
-                      />
-                    </div>
-                  </Tilt>
-                </div>
-              ))}
-            </div>
-          </div>
-        </TabPanel>
-        {/* tools section  */}
-        <TabPanel>
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="flex flex-wrap justify-center gap-5">
-              {skills?.Tools?.map((category, item) => (
-                <div
-                  data-aos="fade-up"
-                  data-aos-delay={item * 100}
-                  key={item}
-                  className="flex items-center justify-center"
-                >
-                  <Tilt
-                    scale={1.3}
-                    transitionSpeed={2500}
-                    className="bg-white rounded-3xl hover:z-10"
-                  >
-                    <div
-                      className={`rounded-3xl p-2 hover:z-10 ${category.bg}`}
-                    >
-                      <img
-                        className="rounded-2xl w-20 h-20 object-contain"
-                        src={category.img}
-                        alt={category.name || "Skill Image"}
-                      />
-                    </div>
-                  </Tilt>
-                </div>
-              ))}
-            </div>
-          </div>
-        </TabPanel>
-      </Tabs>
+      {/* Client Component-কে প্রপস হিসেবে ডেটা পাস করা হলো */}
+      <SkillTabs skills={skills} />
     </div>
   );
 };
