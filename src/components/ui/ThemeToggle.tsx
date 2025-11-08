@@ -28,17 +28,17 @@ export function ThemeToggle() {
   const themes = [
     { id: "light", icon: Sun, label: "Light" },
     { id: "dark", icon: Moon, label: "Dark" },
-    { id: "liquid", icon: Droplets, label: "Liquid" }, // ✅ Liquid theme
+    { id: "liquid", icon: Droplets, label: "Liquid" },
   ] as const;
 
   return (
-    <div className="dark:bg-popover light:bg-popover liquidBtnShadow top-card flex items-center gap-1 p-2 rounded-full">
+    <div className="bg-popover  liquidBtnShadow my-1 flex items-center gap-2 md:p-2 p-2 rounded-full">
       {themes.map(({ id, icon: Icon }) => (
         <LiquidGlassButton
           key={id}
           className={cn(
             "h-9 w-9 transition-all flex items-center justify-center cursor-pointer duration-300 rounded-full",
-            theme === id && ""
+            theme === id ? "cursor-default" : ""
           )}
           onClick={() => setTheme(id)}
           // title={label}

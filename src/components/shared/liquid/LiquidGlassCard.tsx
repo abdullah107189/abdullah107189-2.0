@@ -12,7 +12,7 @@ const LiquidGlassCard: React.FC<LiquidGlassCardProps> = ({
     return <></>;
   }
   return (
-    <div className={`liquid-glass-card relative bg-background ${className}`}>
+    <div className={`liquid-glass-card relative bg-card  p-1 ${className}`}>
       <div className={`card-content  ${className}`}>{children}</div>
     </div>
   );

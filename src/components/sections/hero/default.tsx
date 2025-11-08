@@ -69,7 +69,7 @@ export default function Hero({
         </div>
       </div>
       <div>
-        <div className="relative h-[500px] w-full overflow-hidden">
+        <div className="relative h-screen w-full overflow-hidden">
           <OrbitingCircles>
             <File />
             <Settings />

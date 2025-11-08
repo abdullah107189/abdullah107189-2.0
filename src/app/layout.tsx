@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={quicksand.className}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <svg width="0" height="0" style={{ position: "absolute" }}>
           <defs>

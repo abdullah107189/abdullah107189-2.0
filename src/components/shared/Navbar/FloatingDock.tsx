@@ -26,8 +26,8 @@ export const FloatingDock = ({
 }) => {
   return (
     <>
-      <LiquidGlassCard className="w-full light:bg-card dark:bg-card flex justify-between  items-center mx-auto max-w-7xl rounded-3xl">
-        <p className="text-xl md:text-4xl  font-semibold text-primary ml-4">
+      <LiquidGlassCard className="w-full light:bg-card dark:bg-card flex justify-between items-center mx-auto max-w-7xl rounded-3xl">
+        <p className="text-xl md:text-4xl font-semibold text-primary ml-4">
           Abdullah
         </p>
         <FloatingDockDesktop items={items} className={desktopClassName} />
@@ -51,17 +51,17 @@ const FloatingDockDesktop = ({
 }) => {
   const mouseX = useMotionValue(Infinity);
   return (
-    <div className="hidden md:block ">
+    <div className="hidden md:block">
       <motion.div
         onMouseMove={(e) => mouseX.set(e.pageX)}
         onMouseLeave={() => mouseX.set(Infinity)}
         className={cn(
-          "mx-auto hidden h-16 items-end gap-4 pb-3 md:flex justify-center",
+          "mx-auto hidden items-end gap-4 h-10 md:flex justify-center",
           className
         )}
       >
         {items.map((item) => (
-          <LiquidGlassButton key={item.title} className="rounded-full">
+          <LiquidGlassButton key={item.title} className="rounded-full ">
             <IconContainer mouseX={mouseX} {...item} />
           </LiquidGlassButton>
         ))}
@@ -80,7 +80,7 @@ const FloatingDockMobile = ({
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="fixed md:hidden bottom-0 right-0 z-[9999px]">
+    <div className="fixed md:hidden bottom-0 right-0 z-[99px]">
       <div
         className={cn(
           "absolute right-5 bottom-[100px] rounded-full z-10 md:hidden",
