@@ -8,12 +8,18 @@ export default function Home() {
   return (
     <div>
       <WelcomeSplash duration={3}>
-        {/* navbar  */}
-        <FloatingDockDemo></FloatingDockDemo>
+        {/* navbar  and background */}
+        <div className="fixed w-full md:top-7 top-2 z-50 px-4">
+          <FloatingDockDemo></FloatingDockDemo>
+        </div>
         <ThemeToggleBackground></ThemeToggleBackground>
-        <Hero></Hero>
-        <About></About>
-        <Skills></Skills>
+
+        {/* home content here  */}
+        <div className="max-w-7xl mx-auto">
+          <Hero></Hero>
+          <About></About>
+          <Skills></Skills>u
+        </div>
       </WelcomeSplash>
     </div>
   );

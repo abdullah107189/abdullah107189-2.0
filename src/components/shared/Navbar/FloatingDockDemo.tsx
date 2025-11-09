@@ -48,10 +48,6 @@ export default function FloatingDockDemo() {
     },
   ];
   return (
-    <>
-      <div className="sticky md:top-7 top-2 z-50 px-4">
-        <FloatingDock mobileClassName="translate-y-20" items={links} />
-      </div>
-    </>
+      <FloatingDock mobileClassName="translate-y-20" items={links} />
   );
 }
