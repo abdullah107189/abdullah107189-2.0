@@ -177,6 +177,13 @@
   body {
     @apply bg-background text-foreground;
   }
+  .fillBtn {
+    @apply lg:px-6 lg:py-3 md:px-4 md:py-2 px-3 py-1 rounded-2xl  bg-primary! text-secondary-foreground shadow-lg cursor-pointer;
+  }
+  .outLineBtn {
+    @apply lg:px-6 lg:py-3 md:px-4 md:py-2 px-3 py-1 rounded-2xl 
+             bg-transparent border-primary border hover:bg-primary! transform duration-200 hover:text-secondary-foreground shadow-lg cursor-pointer;
+  }
 }
 
 /* default (light/dark) এ liquid off */

@@ -1,26 +1,28 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 // Tabler Icons
-import {
-  IconBrandReact,
-  IconBrandNextjs,
-  IconBrandMongodb,
-  IconBrandNodejs,
-  IconBrandTypescript,
-} from "@tabler/icons-react";
+
+// import {
+//   IconBrandReact,
+//   IconBrandNextjs,
+//   IconBrandMongodb,
+//   IconBrandNodejs,
+//   IconBrandTypescript,
+// } from "@tabler/icons-react";
+
 import LiquidGlassButton from "@/components/shared/liquid/LiquidGlassButton";
 import TextHighlighter from "@/components/ui/text-highlighter";
+import AvatarGroupDemo from "./AvatarGroupDemo";
 
-const tech = [
-  { Icon: IconBrandReact, label: "React", color: "#61DAFB" },
-  { Icon: IconBrandNextjs, label: "Next.js", color: "#ffffff" },
-  { Icon: IconBrandNodejs, label: "Node.js", color: "#68A063" },
-  { Icon: IconBrandMongodb, label: "MongoDB", color: "#4DB33D" },
-  { Icon: IconBrandTypescript, label: "TypeScript", color: "#3178C6" },
-];
+// const tech = [
+//   { Icon: IconBrandReact, label: "React", color: "#61DAFB" },
+//   { Icon: IconBrandNextjs, label: "Next.js", color: "#ffffff" },
+//   { Icon: IconBrandNodejs, label: "Node.js", color: "#68A063" },
+//   { Icon: IconBrandMongodb, label: "MongoDB", color: "#4DB33D" },
+//   { Icon: IconBrandTypescript, label: "TypeScript", color: "#3178C6" },
+// ];
 
 export default function Hero() {
   return (
@@ -28,7 +30,7 @@ export default function Hero() {
       className="
       relative w-full min-h-[95vh] flex flex-col md:flex-row
       items-center justify-between
-      px-6 md:px-20 pt-24 md:pt-28
+      px-4 pt-24 md:pt-28
       "
     >
       {/* =======================
@@ -91,7 +93,7 @@ export default function Hero() {
         </div>
 
         {/* content part  */}
-        <div className="w-full space-y-6 md:space-y-8 z-20 text-center md:text-left">
+        <div className="w-full space-y-6 md:space-y-8 z-20 text-center md:text-left ">
           {/* Title - CLAMP() FONT SIZE APPLIED HERE */}
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
@@ -141,22 +143,20 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
             className="
-            flex gap-4 mt-3 md:mt-6 justify-center md:justify-start
+            flex gap-4 mt-3  md:mt-6 justify-center md:justify-start
           "
           >
             <LiquidGlassButton
               className="
-              md:px-6 px-4 md:py-2 py-1 rounded-2xl font-medium
-             bg-primary! text-secondary-foreground shadow-lg cursor-pointer
+              fillBtn
             "
             >
               Work with me
             </LiquidGlassButton>
             <LiquidGlassButton
               className="
-              md:px-6 px-4 md:py-3 py-1 rounded-2xl font-medium
-             bg-transparent border-primary border hover:bg-primary
-             transform duration-200 hover:text-secondary-foreground shadow-lg cursor-pointer
+         outLineBtn
+             
             "
             >
               View Resume
@@ -164,7 +164,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Floating Tech Pills */}
-          <div
+          {/* <div
             className="
           flex flex-wrap gap-3 md:gap-4 
           justify-center md:justify-start pt-4
@@ -185,7 +185,7 @@ export default function Hero() {
                 <span className="text-sm font-medium">{label}</span>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -210,16 +210,21 @@ export default function Hero() {
         ></div>
 
         {/* Masked Photo */}
-        <Image
-          src="/professionalMeWithNoneBg.png"
-          alt="Abdullah"
-          width={500}
-          height={600}
-          className="
+        <div className="relative">
+          <Image
+            src="/professionalMeWithNoneBg.png"
+            alt="Abdullah"
+            width={500}
+            height={600}
+            className="
             relative z-20 select-none
             [clip-path:polygon(0_0,100%_0,100%_85%,50%_100%,0_85%)]
           "
-        />
+          />
+          <div className="absolute xl:bottom-5 lg:bottom-2 md:bottom-1 bottom-0 left-1/2 -translate-x-3/7 z-40">
+            <AvatarGroupDemo></AvatarGroupDemo>
+          </div>
+        </div>
       </motion.div>
     </section>
   );
