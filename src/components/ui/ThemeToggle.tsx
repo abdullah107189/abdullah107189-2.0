@@ -32,13 +32,15 @@ export function ThemeToggle() {
   ] as const;
 
   return (
-    <div className="bg-popover  liquidBtnShadow my-1 flex items-center gap-2 md:p-2 p-2 rounded-full">
+    <div className="bg-primary/10 liquidBtnShadow my-1 flex items-center gap-2 md:p-2 p-2 rounded-full">
       {themes.map(({ id, icon: Icon }) => (
         <LiquidGlassButton
           key={id}
           className={cn(
             "h-9 w-9 transition-all flex items-center justify-center cursor-pointer duration-300 rounded-full",
-            theme === id ? "cursor-default" : ""
+            theme === id
+              ? "cursor-default bg-primary! text-primary-foreground "
+              : "bg-primary/7"
           )}
           onClick={() => setTheme(id)}
           // title={label}

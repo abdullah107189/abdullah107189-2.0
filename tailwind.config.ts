@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,39 +8,16 @@ module.exports = {
   ],
   theme: {
     extend: {
-      animation: {
-        blob: "blob 7s infinite",
-        float: "float 6s ease-in-out infinite",
-      },
+      animation: { move: "move 5s linear infinite" },
       keyframes: {
-        blob: {
-          "0%": {
-            transform: "translate(0px, 0px) scale(1)",
-          },
-          "33%": {
-            transform: "translate(30px, -50px) scale(1.1)",
-          },
-          "66%": {
-            transform: "translate(-20px, 20px) scale(0.9)",
-          },
-          "100%": {
-            transform: "translate(0px, 0px) scale(1)",
-          },
-        },
-        float: {
-          "0%, 100%": {
-            transform: "translateY(0px) rotate(12deg)",
-          },
-          "50%": {
-            transform: "translateY(-20px) rotate(12deg)",
-          },
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
         },
       },
-      animationDelay: {
-        '2000': '2000ms',
-        '4000': '4000ms',
-      }
     },
   },
   plugins: [],
-}
+};
+
+export default config;

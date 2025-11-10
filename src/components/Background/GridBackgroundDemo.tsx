@@ -14,7 +14,7 @@ export default function GridBackgroundDemo() {
       />
       {/* Radial gradient for the pcontainer to give a faded look */}
 
-      <div className="h-screen pointer-events-none absolute inset-0 flex items-center justify-center bg-white mask-[radial-gradient(ellipse_at_center,transparent_10%,black)] dark:bg-black"></div>
+      <div className="h-screen pointer-events-none absolute inset-0 flex items-center justify-center mask-[radial-gradient(ellipse_at_center,transparent_10%,black)] bg-background"></div>
     </div>
   );
 }

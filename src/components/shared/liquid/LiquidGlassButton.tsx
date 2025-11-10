@@ -21,14 +21,12 @@ const LiquidGlassButton: React.FC<GlassButtonProps> = ({
 }) => {
   return (
     <button
-      className={`liquid-btn bg-popover ${variant} ${size} ${className}`}
+      className={`liquid-btn bg-primary/7 ${variant} ${size} ${className}`}
       onClick={onClick}
       type={type}
       disabled={disabled}
     >
       {children}
-
-      <style jsx>{``}</style>
     </button>
   );
 };
